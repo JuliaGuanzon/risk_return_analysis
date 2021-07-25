@@ -96,6 +96,8 @@ The file you will use is "risk_return_analysis.ipynb".
 
 First, import the required libraries, then open the the file in the resources folder to pull in the data we need.
 
+![import data](https://user-images.githubusercontent.com/84649228/126886027-827d68e6-5099-4eb9-8db6-f0b068d3d6ae.png)
+
 Next, the application will be calculating the daily returns for all the four fund portfolios and the S&P 500. The application will take a look at the performance of each fund portfolio over the course of the time period.
 
 To calculate daily returns without null values:
@@ -116,6 +118,9 @@ To graph the box plot:
 ```
 daily_returns.plot(kind='box')
 ```
+
+![box plot](https://user-images.githubusercontent.com/84649228/126886088-d6de2e87-16b2-4419-9bd4-e1f8166749ca.png)
+
 
 **Analyzing the Risk**
 
@@ -152,6 +157,7 @@ sharpe_ratio = annual_average_return / annual_standard_deviation
 
 The Sharpe ratio was graphed to show the return a person could make after taking on the risk.
 
+![sharpe](https://user-images.githubusercontent.com/84649228/126886096-acd997b1-e133-49bb-a669-d13596da02f0.png)
 
 
 **Diversifying the Portfolio**
