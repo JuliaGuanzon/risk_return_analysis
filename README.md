@@ -109,7 +109,7 @@ daily_returns = whale_navs.pct_change().dropna()
 
 To graph the daily returns:
 ```
-daily_returns.plot
+daily_returns.plot()
 ```
 
 **Analyzing Volatility**
