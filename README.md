@@ -94,9 +94,11 @@ The file you will use is "risk_return_analysis.ipynb".
 
 **Importing Libraries and Preparing Data**
 
-First, import the required libraries, then open the the file in the resources folder to pull in the data we need.
+Start off by importing the required libraries, then we will need to pull in the the file in the resources folder to capture the data we need.
 
 ![import data](https://user-images.githubusercontent.com/84649228/126886027-827d68e6-5099-4eb9-8db6-f0b068d3d6ae.png)
+![read csv](https://user-images.githubusercontent.com/84649228/126889169-31fcc65e-d80e-4333-8eaf-9d73112b2b55.png)
+
 
 Next, the application will be calculating the daily returns for all the four fund portfolios and the S&P 500. The application will take a look at the performance of each fund portfolio over the course of the time period.
 
