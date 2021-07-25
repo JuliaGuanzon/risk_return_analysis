@@ -1,6 +1,6 @@
 # Risk Return Analysis
 
-Investing money can be difficult if a person has limited knowledge on what to look for in an investment. When it comes to investing, a person should do their research to verify that it is the right decision to place their money in a certain investment by measuring the risks. People may not be as vigilant in their research, but with help of a risk-management application, it can assist people in picking the best investments for building their wealth. The risk return analysis application was developed to determine what funds have the most investment potential. By evaluating and accessing different types of funds through risk-management metrics, this application will help determine what funds have the best investment returns.
+Investing money can be difficult if a person has limited knowledge on what to look for in an investment. When it comes to investing, a person should do their research to verify that it is the right decision to place their money in a certain investment by measuring the risks. People may not be as vigilant in their research, but with the help of a risk-management application, people can get assistance in picking the best investments for building their wealth. The risk return analysis application was developed to determine what funds have the most investment potential. By evaluating and accessing different types of funds through risk-management metrics, this application will help people determine what funds have the best investment returns.
 
 ---
 
@@ -49,7 +49,7 @@ jupyter lab
 
 To exit out of JupyterLab hit: Ctrl + C
 
-It is important to also instal Pandas as the majority of code use is using language from Pandas.
+It is important to also install Pandas as the majority of code used is using language from Pandas.
 
 ```
 conda activate dev
@@ -75,7 +75,7 @@ pip install numpy
 
 ## Usage and Examples
 
-To use the risk return analysis application, the repository will need to be cloned from GitHub and to a local repository. 
+To use the risk return analysis application, the repository will need to be cloned from GitHub to a local repository. 
 
 Enter into the dev environment in the risk_return_analysis folder by commanding: 
 
@@ -92,17 +92,18 @@ to run the file.
 
 The file you will use is "risk_return_analysis.ipynb".
 
-**Using the application:**
+**Importing Libraries and Preparing Data**
 
 First, the user will need to import the required libraries. Then, we are going to open the the file in the resources folder to pull in the data we need.
 
 Next, the application will be calculating the daily returns for all the four fund portfolios and the S&P 500. The application will take a look at the performance of each fund portfolio over the course of the time period.
+
 To calculate daily returns without null values:
 ```
 daily_returns = whale_navs.pct_change().dropna()
 ```
 
-To graph the daily returns on all items:
+To graph the daily returns:
 ```
 daily_returns.plot
 ```
@@ -132,22 +133,55 @@ annual_standard_deviation = daily_returns.std() * np.sqrt(252)
 
 *252 = the amount of trading days in a year*
 
-This was also graphed over a 21-day rolling window.
-
 
 **Analyze the Risk-Return**
 
 To analyze the risk-return, the use of the Sharpe ratio is a must, as it assesses risk and reward by measuring the excess return for the risk that someone assumes when investing.
 
-```
-sharpe_ratio = annual_average_return / annual_standard_deviation 
-```
-
-Take the calculation of the annual standard deviation from the last section and divide it by the annual average return calculation:
+To calculate the Sharpe Ratio, take the calculation of the annual standard deviation from the last section and divide it by the annual average return calculation:
 
 ```
 annual_average_return = daily_returns.mean() * trading_days
 ```
+
+Sharpe Ratio:
+
+```
+sharpe_ratio = annual_average_return / annual_standard_deviation 
+```
+
+The Sharpe ratio was graphed to show the return a person could make after taking on the risk.
+
+
+
+**Diversifying the Portfolio**
+
+A well-balanced porfolio is a successul portfolio. A person should distribute their money accross various investment types as it is a great risk-management strategy to protect their wealth. By diversifying a porfolio, the overall risk decreases.
+
+By using variance, covariance, and beta metrics, we can evaluate the risk that's associated with the group of assets. These next calculations will help narrow down the fund that should be added to a person's portfolio.
+
+Variance measures the risk of one asset considering how far the price deviates from its mean value.
+
+For this application, the S&P 500 was used with a 60-day rolling window:
+
+```
+variance = daily_returns['S&P 500'].rolling(window=60).var()
+
+```
+
+Seperately, the covariance between Berkshire Hathaway and Tiger Global management was calculated. These were choosen as they showed the best investment return from the Sharpe ratio bar graph.
+
+Covariance calculation:
+```
+covariance_bh = daily_returns['BERKSHIRE HATHAWAY INC'].rolling(window=60).cov(daily_returns['S&P 500'])
+```
+
+Beta was calculated to show how likely the fund's return value would change relative to changes in the S&P 500.
+
+```
+beta_bh = covariance_bh / variance
+```
+
 
 ---
 
